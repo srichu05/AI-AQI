@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-AQI Risk Forecasting GIS Dashboard</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="logo-icon">💨</div>
+                <div class="brand-text">
+                    <h2>AI-AQI Forecasting</h2>
+                    <span class="badge">Hybrid DL Model v1.0</span>
+                </div>
+            </div>
+
+            <div class="control-panel">
+                <h3>Prediction Mode</h3>
+                <div class="mode-toggle">
+                    <button id="btn-historical" class="toggle-btn active" onclick="switchMode('historical')">
+                        <span>📊 Static 2025 Holdout</span>
+                    </button>
+                    <button id="btn-live" class="toggle-btn" onclick="switchMode('live')">
+                        <span>⚡ Live Telemetry (Simulated)</span>
+                    </button>
+                </div>
+
+                <div class="info-box">
+                    <p id="mode-description">
+                        <strong>Static 2025 Holdout Mode:</strong> Displaying pre-computed out-of-time predictions from the canonical frozen Deep Learning model on the 2025 test dataset.
+                    </p>
+                </div>
+
+                <h3>AQI Risk Class Legend</h3>
+                <div class="legend-list">
+                    <div class="legend-item"><span class="color-box c0"></span><span class="label">Low (0 - Good)</span></div>
+                    <div class="legend-item"><span class="color-box c1"></span><span class="label">Moderate (1)</span></div>
+                    <div class="legend-item"><span class="color-box c2"></span><span class="label">Unhealthy (2)</span></div>
+                    <div class="legend-item"><span class="color-box c3"></span><span class="label">Very Unhealthy (3)</span></div>
+                    <div class="legend-item"><span class="color-box c4"></span><span class="label">Severe (4 - Hazardous)</span></div>
+                </div>
+
+                <div class="stats-panel" id="district-details">
+                    <h3>Selected District Details</h3>
+                    <p class="placeholder-text">Click any district marker on the map to inspect model prediction breakdown.</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <p>AI-AQI Research Project &copy; 2026</p>
+                <p class="model-info">Model: CNN-BiLSTM-Bahdanau Temporal Attention</p>
+            </div>
+        </aside>
+
+        <!-- Main GIS Map View -->
+        <main class="map-view">
+            <div id="map"></div>
+        </main>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

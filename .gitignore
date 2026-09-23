@@ -1,0 +1,155 @@
+# ==============================================================================
+# AI-AQI Project Root .gitignore
+# Air Quality Index (AQI) System with Deep Learning, CDSS, IoT & GIS
+# Suitable for Vercel (Frontend) + Oracle Cloud (FastAPI Backend + PostgreSQL)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment Variables & Security Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.env
+*.env.local
+*.env.development.local
+*.env.test.local
+*.env.production.local
+*.pem
+*.key
+*.cert
+*.crt
+
+# ------------------------------------------------------------------------------
+# 2. Python Caches & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# ------------------------------------------------------------------------------
+# 3. Node.js Dependencies & Frontend Build Outputs (Vercel Compatible)
+# ------------------------------------------------------------------------------
+node_modules/
+frontend/node_modules/
+.npm/
+.yarn/
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-ssr/
+frontend/dist/
+build/
+.next/
+.turbo/
+.out/
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# 4. Databases & Storage (SQLite Dev & Test DBs)
+# ------------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-shm
+*.db-wal
+ai_aqi_telemetry.db
+test_*.db
+
+# ------------------------------------------------------------------------------
+# 5. Machine Learning / Deep Learning Models & Heavy Data Tensors
+# ------------------------------------------------------------------------------
+# Ignore heavy model binaries (e.g., random_forest.joblib 160MB exceeds GitHub 100MB limit)
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+*.onnx
+*.pth
+*.pt
+*.ckpt
+*.pb
+*.safetensors
+
+# Ignore generated preprocessed NumPy tensor arrays (>90MB total in data/dl/)
+data/dl/*.npy
+
+# Preserve lightweight primary model weights & metadata config
+!saved_models/best_dl_model.keras
+!data/dl/feature_groups.json
+
+# ------------------------------------------------------------------------------
+# 6. Live Telemetry Dumps & Temporary Data
+# ------------------------------------------------------------------------------
+data/live/*
+!data/live/.gitkeep
+
+# Note: data/ml/dataset_ml_ready.csv and data/gis/karnataka_districts.geojson
+# are intentionally TRACKED as required dataset dependencies for backend API endpoints.
+
+# ------------------------------------------------------------------------------
+# 7. Temporary Files, Scratch & Archives
+# ------------------------------------------------------------------------------
+scratch/
+experiments/*.log
+experiments/*.tmp
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ------------------------------------------------------------------------------
+# 8. IDE, OS Metadata & System Caches
+# ------------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor configurations
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# AI Assistant & Local IDE directories
+.antigravity/
+.gemini/

@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # AI-AQI FastAPI REST Service & ML Inference Engine
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai_aqi_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - LOG_LEVEL=INFO
+      - HOST=0.0.0.0
+      - PORT=8000
+    volumes:
+      - ./data:/app/data
+      - ./saved_models:/app/saved_models
+      - ./experiments:/app/experiments
+      - ai_aqi_db_data:/app/db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 3
+
+  # Production Web Server (NGINX) for Dashboard Frontend
+  frontend:
+    image: nginx:alpine
+    container_name: ai_aqi_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./deployment/dashboard:/usr/share/nginx/html:ro
+      - ./deployment/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+
+volumes:
+  ai_aqi_db_data:

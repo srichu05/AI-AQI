@@ -1,0 +1,51 @@
+{
+  "dynamic_features": [
+    "PM2.5",
+    "PM10",
+    "NO2",
+    "SO2",
+    "CO",
+    "O3",
+    "AOD",
+    "NDVI",
+    "Temperature",
+    "Humidity",
+    "Pressure",
+    "Wind_Speed",
+    "Wind_Direction",
+    "Rainfall",
+    "sin_day_of_year",
+    "cos_day_of_year",
+    "sin_month",
+    "cos_month",
+    "sin_day_of_week",
+    "cos_day_of_week",
+    "sin_hour",
+    "cos_hour",
+    "boundary_flag",
+    "quality_score"
+  ],
+  "static_num_features": [
+    "latitude",
+    "longitude",
+    "district_area",
+    "population_density",
+    "road_density",
+    "green_cover",
+    "elevation",
+    "industrial_ratio",
+    "commercial_ratio",
+    "residential_ratio",
+    "water_body_ratio",
+    "avg_traffic_volume",
+    "mean_annual_temp",
+    "mean_annual_rain",
+    "coastal_distance",
+    "forest_ratio"
+  ],
+  "static_cat_features": [
+    "district_id",
+    "land_use_id",
+    "urban_rural_id"
+  ]
+}

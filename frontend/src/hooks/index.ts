@@ -1,0 +1,2 @@
+// Custom hooks registry
+export {};

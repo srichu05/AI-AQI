@@ -1,0 +1,222 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: #0f172a;
+    color: #f8fafc;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+.sidebar {
+    width: 380px;
+    background-color: #1e293b;
+    border-right: 1px solid #334155;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    z-index: 1000;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.4);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #334155;
+}
+
+.logo-icon {
+    font-size: 32px;
+}
+
+.brand-text h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #f8fafc;
+}
+
+.badge {
+    display: inline-block;
+    font-size: 11px;
+    background-color: #3b82f6;
+    color: #ffffff;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.control-panel {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.control-panel h3 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.mode-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.toggle-btn {
+    background-color: #334155;
+    color: #94a3b8;
+    border: 1px solid #475569;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background-color: #475569;
+    color: #ffffff;
+}
+
+.toggle-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 0 12px rgba(37, 99, 235, 0.4);
+}
+
+.info-box {
+    background-color: #0f172a;
+    border-left: 3px solid #3b82f6;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #cbd5e1;
+    margin-bottom: 20px;
+}
+
+.legend-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #e2e8f0;
+}
+
+.color-box {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+
+}
+
+.c0 { background-color: #10b981; } /* Low - Green */
+.c1 { background-color: #3b82f6; } /* Moderate - Blue */
+.c2 { background-color: #f59e0b; } /* Unhealthy - Yellow/Orange */
+.c3 { background-color: #ef4444; } /* Very Unhealthy - Red */
+.c4 { background-color: #8b5cf6; } /* Severe - Purple */
+
+.stats-panel {
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 16px;
+}
+
+.placeholder-text {
+    font-size: 12px;
+    color: #64748b;
+    font-style: italic;
+}
+
+.detail-card h4 {
+    font-size: 16px;
+    color: #f8fafc;
+    margin-bottom: 8px;
+}
+
+.risk-badge-large {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 13px;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.prob-bar-container {
+    margin-top: 8px;
+}
+
+.prob-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: #cbd5e1;
+}
+
+.prob-bar {
+    height: 6px;
+    background-color: #334155;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.prob-fill {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.map-view {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    background-color: #020617;
+}
+
+.footer {
+    margin-top: auto;
+    font-size: 11px;
+    color: #64748b;
+    border-top: 1px solid #334155;
+    padding-top: 12px;
+}
+
+.model-info {
+    font-size: 10px;
+    color: #475569;
+}
