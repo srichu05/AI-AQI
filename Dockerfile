@@ -25,6 +25,7 @@ WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
+    MALLOC_ARENA_MAX=2 \
     PORT=8000
 
 # Copy installed packages from builder
@@ -41,9 +42,9 @@ USER appuser
 
 EXPOSE 8000
 
-# Healthcheck probe for container orchestration (Docker/K8s/Cloud Run)
-HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
-  CMD curl -f http://localhost:8000/health || exit 1
+# Healthcheck probe for container orchestration (Render / Cloud Run / Docker)
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD python -c "import urllib.request, os; p=os.getenv('PORT','8000'); urllib.request.urlopen(f'http://localhost:{p}/health')" || exit 1
 
-# Production ASGI server launch command
-CMD ["uvicorn", "deployment.api:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "2"]
+# Production ASGI server launch command binding to Render $PORT with single worker (512MB RAM safe)
+CMD ["sh", "-c", "exec uvicorn deployment.api:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1"]
