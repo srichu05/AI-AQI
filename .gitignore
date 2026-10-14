@@ -19,6 +19,8 @@
 *.key
 *.cert
 *.crt
+backups/
+*.dump
 
 # ------------------------------------------------------------------------------
 # 2. Python Caches & Virtual Environments
